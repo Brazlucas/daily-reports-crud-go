@@ -27,7 +27,7 @@ cd daily-reports-crud-go
 Instale as dependências:
 
 ```sh
-go mod daily-reports-crud-go
+go get github.com/mattn/go-sqlite3
 go mod tidy
 ```
 
