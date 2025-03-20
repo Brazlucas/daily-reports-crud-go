@@ -9,7 +9,7 @@ import (
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	reports := []database.Report{}
-	rows, err := database.DB.Query("SELECT id, content, timestamp FROM reports")
+	rows, err := database.DB.Query("SELECT id, content, timestamp FROM reports ORDER BY timestamp DESC")
 	if err != nil {
 		log.Fatal(err)
 	}
