@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <title>Reports</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold mb-4">Meus Reports</h1>
+        <form action="/add" method="post" class="flex gap-2 mb-4">
+            <input type="text" name="content" class="border p-2 flex-grow rounded-lg" required>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Adicionar</button>
+        </form>
+        <table class="w-full border-collapse border border-gray-200">
+            <tr class="bg-gray-200">
+                <th class="border p-2">ID</th>
+                <th class="border p-2">Conteúdo</th>
+                <th class="border p-2">Timestamp</th>
+                <th class="border p-2">Ações</th>
+            </tr>
+            {{range .}}
+            <tr class="hover:bg-gray-100">
+                <td class="border p-2">{{.ID}}</td>
+                <td class="border p-2 break-words">{{.Content}}</td>
+                <td class="border p-2">{{.Timestamp}}</td>
+                <td class="border p-2">
+                    <a href="/edit?id={{.ID}}" class="bg-yellow-500 text-white px-2 py-1 rounded">Editar</a>
+                    <form action="/delete" method="post" class="inline">
+                        <input type="hidden" name="id" value="{{.ID}}">
+                        <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+            {{end}}
+        </table>
+    </div>
+</body>
+</html>
