@@ -22,7 +22,8 @@
             <tr class="hover:bg-gray-100">
                 <td class="border p-2">{{.ID}}</td>
                 <td class="border p-2 break-words">{{.Content}}</td>
-                <td class="border p-2">{{.Timestamp}}</td>
+                <!-- Adicionamos um data-timestamp para manipular via JavaScript -->
+                <td class="border p-2 timestamp" data-timestamp="{{.Timestamp}}"></td>
                 <td class="border p-2">
                     <a href="/edit?id={{.ID}}" class="bg-yellow-500 text-white px-2 py-1 rounded">Editar</a>
                     <form action="/delete" method="post" class="inline">
@@ -34,5 +35,6 @@
             {{end}}
         </table>
     </div>
+    <script src="/static/js/date-formatter.js"></script>
 </body>
 </html>
